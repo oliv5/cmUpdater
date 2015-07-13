@@ -1,4 +1,4 @@
-# cmupdater
+# cmUpdater
 
 #What is this?
 
