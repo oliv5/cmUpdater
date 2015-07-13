@@ -3,7 +3,9 @@
 #Changelog: 
 
 0.2:
+
 Added function to check if update-files are already present in the specified directory.
+
 Implemented MD5 checksums for the updates.
 
 #WHAT IS THIS?
