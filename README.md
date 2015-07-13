@@ -63,6 +63,6 @@ v0.2:
 
 -Implemented MD5 checksums for the updates
 
-# 
+# -
 
 Obligatory "I'm not responsible if you fry your device". I have tested this thoroughly with various different devices (victara, condor, m7) but there can still be problems I'm not aware of, even if it seems unlikely.
