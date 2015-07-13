@@ -2,7 +2,9 @@
 
 DEVICE=victara #Put your Device-ID here, for example 'hammerhead' for Nexus 5 (without quotes)
 
-CMVERSION=12.1 #The CyanogenMod-Version you'd like to search for. Example: '11' (without quotes) Note: If the version you put here differs from the version on your device, you'll get an error to protect your device.
+CMVERSION=12.1 #The CyanogenMod-Version you'd like to search for. Example: '11' (without quotes). 
+#Note: If the version you put here differs from the version on your device, 
+#you'll get an error to protect your device.
 
 FILEPATH=./ #The path where the script will download CyanogenMod and store your backup.
 #If you leave './', everything will go in the directory in which the script is located. 
@@ -18,13 +20,17 @@ FILEPATH=./ #The path where the script will download CyanogenMod and store your 
 
 
 
-ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) #Reads the currently installed CM-version from your device's /system/build.prop. 
+ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) 
+#Reads the currently installed CM-version from your device's /system/build.prop. 
 
-CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) #Searches the CyanogenMod-website of your device for the latest update.
+CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) 
+#Searches the CyanogenMod-website of your device for the latest update.
 
-MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) #Gets the md5-hash for the latest update
+MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) 
+#Gets the md5-hash for the latest update
 
-WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) #Selects the most recent direct-link to the CyanogenMod-zip
+WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) 
+#Selects the most recent direct-link to the CyanogenMod-zip
 
 
 
