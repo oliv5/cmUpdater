@@ -2,32 +2,50 @@
 
 #What is this?
 
-This script will compare the currently installed CyanogenMod-version on your phone 
-with the newest one available for your device and automatically download available updates 
-and their MD5-hash, which then get automatically installed in your recovery. 
-It also backs up your /system, /data and /boot-partitions and moves the backup to your PC (requires TWRP). 
-You'll get prompted at every step. 
+This is a Bash-script that allows you to update and backup your CyanogenMod-device from your PC.
 
-If you only want the downloader/backup-tool, look here: https://github.com/heavyhdx/cmdownloader
+#Features:
+
+-Works with every device that is officialy supported by CyanogenMod
+
+-Checks for available updates by comparing the CyanogenMod-verison on your device with the newest one available.
+
+-If the latest CyanogenMod-update version differs from that on your device, you'll get an error to prevent you from getting the wrong files (for example flashing CM11 over CM12)
+
+-Downloads the update
+
+-Creates a backup of /system, /data and /boot and moves it to your PC (TWRP required, can be altered to include other partitions)
+
+-Automatic installation of the downloaded update (TWRP required)
+
+-MD5-generation and verification in TWRP.
+
+-Path of work environment can be changed
+
+-Prompts you at every step of the way
+
+
+If you only want to download updates and backup your phone, look here: https://github.com/heavyhdx/cmdownloader
 
 #Requirements:
 
-Your phone needs to be connected to your PC via USB. 
+-Your phone needs to be connected to your PC via USB. 
 
-Android ADB-tools have to be installed and set up properly (meaning globally available on Windows). 
+-Android ADB-tools have to be installed and set up properly (meaning globally available on Windows). 
 
-USB-debugging and ADB root-permissions must be enabled (you can do that in the Developer-Options). 
+-USB-debugging and ADB root-permissions must be enabled (you can do that in the Developer-Options). 
 
-On Windows you need to make sure that your drivers are working properly, both in the system and in the recovery and you need Cygwin. 
+-On Windows you need to make sure that your drivers are working properly, both in the system and in the recovery.
 
-You NEED TWRP for installing the .zip remotely on your phone and making backups. 
+-You need Cygwin to run this on Windows.
 
-DO NOT unplug your device at any part of the process.
+-You NEED TWRP for installing the .zip remotely on your phone and making backups. 
 
+-DO NOT unplug your device at any part of the process.
 
 #How to use:
 
-It works with every phone that is supported by official CyanogenMod-updates, you just need to replace my device-information in the cmupdater.sh file with yours and run the file via the terminal.
+Replace my device-information in the cmupdater.sh file with yours and run the file via the terminal.
 
 #Changelog: 
 
