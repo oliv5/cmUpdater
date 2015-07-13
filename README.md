@@ -39,7 +39,7 @@ If you only want to download updates and backup your phone, look here: https://g
 
 -You need Cygwin to run this on Windows
 
--You NEED TWRP for installing the .zip remotely on your phone and making backups.
+-You NEED TWRP for installing the .zip remotely on your phone and making backups
 
 -DO NOT unplug your device at any part of the process
 
