@@ -43,9 +43,13 @@ If you only want to download updates and backup your phone, look here: https://g
 
 -DO NOT unplug your device at any part of the process.
 
+#Limitations
+
+-Currently this can only download the latest nightly of the highest version of CM that is available on your device, in other words the top file from your device's CyanogenMod-website (e.g. https://download.cyanogenmod.org/?device=victara)
+
 #How to use:
 
-Replace my device-information in the cmupdater.sh file with yours and run the file via the terminal.
+Make sure you meet all requrirements and then replace my device-information in the cmupdater.sh file with yours and run the file via the terminal.
 
 #Changelog: 
 
