@@ -4,7 +4,7 @@
 
 This is a Bash-script that allows you to update and backup your CyanogenMod-device from your PC
 
-#Features:
+#Features
 
 -Works with every device that is officialy supported by CyanogenMod
 
@@ -27,7 +27,7 @@ This is a Bash-script that allows you to update and backup your CyanogenMod-devi
 
 If you only want to download updates and backup your phone, look here: https://github.com/heavyhdx/cmdownloader
 
-#Requirements:
+#Requirements
 
 -Your phone needs to be connected to your PC via USB
 
@@ -47,11 +47,11 @@ If you only want to download updates and backup your phone, look here: https://g
 
 -Currently this can only download the latest nightly of the highest version of CM that is available on your device, in other words the top file from your device's CyanogenMod-website (e.g. https://download.cyanogenmod.org/?device=victara)
 
-#How to use:
+#How to use
 
 Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours and run the file via the terminal
 
-#Changelog: 
+#Changelog
 
 v0.1:
 
