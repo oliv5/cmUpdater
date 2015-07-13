@@ -33,6 +33,6 @@ You NEED TWRP for installing the .zip remotely on your phone and making backups.
 DO NOT unplug your device at any part of the process.
 
 
-HOW TO USE:
+#HOW TO USE:
 
 It works with every phone that is supported by official CyanogenMod-updates, you just need to replace my device-information in the cmupdater.sh file with yours and run the file via the terminal.
