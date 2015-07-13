@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=victara #Device-ID, for example 'hammerhead' for Nexus 5 (without quotes)
+DEVICE=victara #Put your Device-ID here, for example 'hammerhead' for Nexus 5 (without quotes)
 
 
 CMVERSION=12.1 #The CyanogenMod-Version you'd like to search for. Example: '11' (without quotes) Note: If the version you put here differs from the version on your device, you'll get an error to protect your device.
