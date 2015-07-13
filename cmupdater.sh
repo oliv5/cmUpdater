@@ -133,7 +133,7 @@ echo
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
     		adb pull /sdcard/TWRP/BACKUPS/ ${FILEPATH}'backup/'
 		adb shell rm -r /sdcard/TWRP/BACKUPS/
-		echo 'Moved backups to the PC and removed them from the phone!'
+		echo 'Moved backups to the PC and removed them from the device!'
 		cmUpdater1
 	fi
 	if [[ $REPLY =~ ^[Nn]$ ]]; then 
@@ -168,7 +168,7 @@ echo
 }
 
 rebooter(){
-read -p "All done. Do you want to reboot your phone now? (y/n/a)" -n 1 -r
+read -p "All done. Do you want to reboot your device now? (y/n/a)" -n 1 -r
 echo 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		adb reboot
