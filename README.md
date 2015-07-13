@@ -49,7 +49,7 @@ If you only want to download updates and backup your phone, look here: https://g
 
 #How to use:
 
-Make sure you meet all requrirements and then replace my device-information in the cmupdater.sh file with yours and run the file via the terminal
+Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours and run the file via the terminal
 
 #Changelog: 
 
