@@ -1,14 +1,6 @@
 # cmupdater
 
-#Changelog: 
-
-0.2:
-
-Added function to check if update-files are already present in the specified directory.
-
-Implemented MD5 checksums for the updates.
-
-#WHAT IS THIS?
+#What is this?
 
 This script will compare the currently installed CyanogenMod-version on your phone 
 with the newest one available for your device and automatically download available updates 
@@ -18,7 +10,7 @@ You'll get prompted at every step.
 
 If you only want the downloader/backup-tool, look here: https://github.com/heavyhdx/cmdownloader
 
-#REQUIREMENTS:
+#Requirements:
 
 Your phone needs to be connected to your PC via USB. 
 
@@ -33,6 +25,18 @@ You NEED TWRP for installing the .zip remotely on your phone and making backups.
 DO NOT unplug your device at any part of the process.
 
 
-#HOW TO USE:
+#How to use:
 
 It works with every phone that is supported by official CyanogenMod-updates, you just need to replace my device-information in the cmupdater.sh file with yours and run the file via the terminal.
+
+#Changelog: 
+
+v0.1:
+
+Initial release
+
+v0.2:
+
+Added function to check if update-files are already present in the specified directory.
+
+Implemented MD5 checksums for the updates.
