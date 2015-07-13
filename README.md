@@ -25,11 +25,11 @@ This is a Bash-script that allows you to update and backup your CyanogenMod-devi
 -Prompts you at every step of the way
 
 
-If you only want to download updates and backup your phone, look here: https://github.com/heavyhdx/cmdownloader
+If you only want to download updates and backup your device, look here: https://github.com/heavyhdx/cmdownloader
 
 #Requirements
 
--Your phone needs to be connected to your PC via USB
+-Your device needs to be connected to your PC via USB
 
 -Android ADB-tools have to be installed and set up properly (meaning globally available on Windows)
 
@@ -39,7 +39,7 @@ If you only want to download updates and backup your phone, look here: https://g
 
 -You need Cygwin to run this on Windows
 
--You NEED TWRP for installing the .zip remotely on your phone and making backups
+-You NEED TWRP for installing the .zip remotely on your device and making backups
 
 -DO NOT unplug your device at any part of the process
 
