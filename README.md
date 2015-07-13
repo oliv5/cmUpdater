@@ -33,7 +33,7 @@ If you only want to download updates and backup your phone, look here: https://g
 
 -Android ADB-tools have to be installed and set up properly (meaning globally available on Windows)
 
--USB-debugging and ADB root-permissions must be enabled (you can do that in the Developer-Options)
+-USB-debugging and must be enabled (you can do that in the Developer-Options)
 
 -On Windows you need to make sure that your drivers are working properly, both in the system and in the recovery
 
