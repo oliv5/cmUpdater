@@ -21,11 +21,15 @@ If you only want the downloader/backup-tool, look here: https://github.com/heavy
 #REQUIREMENTS:
 
 Your phone needs to be connected to your PC via USB. 
+
 Android ADB-tools have to be installed and set up properly (meaning globally available on Windows). 
+
 USB-debugging and ADB root-permissions must be enabled (you can do that in the Developer-Options). 
-On Windows you need to make sure that your drivers are working properly, 
-both in the system and in the recovery and you need Cygwin. 
+
+On Windows you need to make sure that your drivers are working properly, both in the system and in the recovery and you need Cygwin. 
+
 You NEED TWRP for installing the .zip remotely on your phone and making backups. 
+
 DO NOT unplug your device at any part of the process.
 
 
