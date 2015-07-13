@@ -2,10 +2,14 @@
 
 DEVICE=victara #Put your Device-ID here, for example 'hammerhead' for Nexus 5 (without quotes)
 
-
 CMVERSION=12.1 #The CyanogenMod-Version you'd like to search for. Example: '11' (without quotes) Note: If the version you put here differs from the version on your device, you'll get an error to protect your device.
 
-FILEPATH=./ #The path where the script will download CyanogenMod and store your backup (if you leave './', everything will go in the directory in which the script is located). The script will automatically check if the update is already present in the specified directory, in case you had to abort the process after the download completed. You NEED to make sure your path ends with '/'.
+FILEPATH=./ #The path where the script will download CyanogenMod and store your backup.
+#If you leave './', everything will go in the directory in which the script is located. 
+#The script will automatically check if the update is already present in the specified directory,
+#in case you had to abort the process after the download completed. 
+
+#You NEED to make sure your path ends with '/' !
 
 
 
