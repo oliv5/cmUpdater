@@ -111,7 +111,7 @@ twrpBackupremover(){
 		read -p "Old backups found on your PC. Do you want to remove them? (y/n/a)" -n 1 -r
 		echo 
 		if [[ $REPLY =~ ^[Yy]$ ]]; then
-    			rm -r ${FILEPATH}'backup/'
+    			rm -r "${FILEPATH}backup/"
 			echo 'Removed old backups.'
 			twrpBackup
 		fi
@@ -131,7 +131,7 @@ twrpBackup(){
 read -p "Backup finished. Do you want to copy it to your PC and remove it from the device? This also can take very long. (y/n/a)" -n 1 -r
 echo 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-    		adb pull /sdcard/TWRP/BACKUPS/ ${FILEPATH}'backup/'
+    		adb pull /sdcard/TWRP/BACKUPS/ "${FILEPATH}backup/"
 		adb shell rm -r /sdcard/TWRP/BACKUPS/
 		echo 'Moved backups to the PC and removed them from the device!'
 		cmUpdater1
@@ -147,11 +147,11 @@ echo
 
 cmUpdater1(){
 echo 'Pushing cm-'${CURL}'.zip and its MD5 to your device...'
-adb push ${FILEPATH}'cm-'$CURL'.zip' /sdcard/
-adb push ${FILEPATH}'cm-'$CURL'.zip.md5' /sdcard/
-adb shell twrp install /sdcard/cm-$CURL.zip
-adb shell rm /sdcard/cm-$CURL.zip
-adb shell rm /sdcard/cm-$CURL.zip.md5
+adb push "${FILEPATH}cm-${CURL}.zip" /sdcard/
+adb push "${FILEPATH}cm-${CURL}.zip.md5" /sdcard/
+adb shell twrp install /sdcard/cm-${CURL}.zip
+adb shell rm /sdcard/cm-${CURL}.zip
+adb shell rm /sdcard/cm-${CUR}L.zip.md5
 read -p "Installation finished. Do you want clear cache and dalvik-cache? (y/n/a)" -n 1 -r
 echo 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
