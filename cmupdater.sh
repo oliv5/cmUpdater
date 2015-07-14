@@ -61,7 +61,7 @@ updateChecker(){
 }
 
 updateDownloader(){
-	if [ -f "${FILEPATH}'cm-${CURL}.zip'" ]; then
+	if [ -f "${FILEPATH}cm-${CURL}.zip" ]; then
 		read -p "Update found at ${FILEPATH} (cm-${CURL}.zip). Do you want to reboot your device into recovery and install it? (y/n/a)" -n 1 -r
 		echo 
 		if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -77,8 +77,8 @@ updateDownloader(){
 }
 
 updateDownloader2(){
-wget ${WGETURL} -O "${FILEPATH}'cm-'${CURL}.zip"
-echo ${MD5} > ${FILEPATH}'cm-'${CURL}'.zip.md5'
+wget ${WGETURL} -O "${FILEPATH}cm-${CURL}.zip"
+echo ${MD5} > "${FILEPATH}cm-${CURL}.zip.md5"
 read -p "Update downloaded. Do you want to reboot your device into recovery and install it? (y/n/a)" -n 1 -r
 echo 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
