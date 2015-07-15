@@ -18,7 +18,7 @@ FILEPATH=./ #The path where the script will download CyanogenMod and store your 
 #------------------------------------------------------------------------------------------------------
 
 
-
+adb start-server #Starts the adb-server before reading the variables so that they are loaded correctly
 
 ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) 
 #Reads the currently installed CM-version from your device's /system/build.prop. 
@@ -178,5 +178,6 @@ echo
 		exit
 	fi
 }
+
 
 versionVerifier
