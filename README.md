@@ -1,8 +1,8 @@
-# cmUpdater
+# cmUpdater v0.3
 
 #What is this?
 
-This is a Bash-script that allows you to update and backup your CyanogenMod-device from your PC
+This is a Bash-script that allows you to backup, restore and update your CyanogenMod-device from your PC
 
 #Features
 
@@ -16,16 +16,15 @@ This is a Bash-script that allows you to update and backup your CyanogenMod-devi
 
 -Creates a backup of /system, /data and /boot and moves it to your PC (TWRP required, can be altered to include other partitions)
 
+-Restores said update from your PC
+
 -Automatic installation of the downloaded update (TWRP required)
 
--MD5-generation and verification in TWRP
+-MD5-generation and verification for backups and updates in TWRP
 
 -Path of work environment can be changed
 
--Prompts you at every step of the way
-
-
-If you only want to download updates and backup your device, look here: https://github.com/heavyhdx/cmdownloader
+-Asks you exactly what you want to do
 
 #Requirements
 
@@ -62,6 +61,15 @@ v0.2:
 -Added function to check if update-files are already present in the specified directory
 
 -Implemented MD5 checksums for the updates
+
+v0.3:
+
+-Added restore-option for backups
+
+-Completely changed the way functions are called (used to be a chain where all functions called other functions, now it's a menu). 
+ This also allows for much simpler implementation of new features and changes in the future.
+
+-Deleted the cmDownloader-project and implemented all features into this one
 
 # -
 
