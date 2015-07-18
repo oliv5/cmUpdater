@@ -44,11 +44,17 @@ This is a Bash-script that allows you to backup, restore and update your Cyanoge
 
 #Limitations
 
--Currently this can only download the latest nightly of the highest version of CM that is available on your device, in other words the top file from your device's CyanogenMod-website (e.g. https://download.cyanogenmod.org/?device=victara)
+-This can only download the latest nightly of the highest version of CM that is available on your device, in other words the top file from your device's CyanogenMod-website (e.g. https://download.cyanogenmod.org/?device=victara)
+
+-TWRP names the backup-folder differently for every single device (the path is /sdcard/TWRP/BACKUPS/RandomDeviceID/) so I have to delete BACKUPS/ to make sure there's no backup already there.
+That means that if you have other backups there, they will be removed! So make sure you save them before running this, if you have any.
+
+-Same thing with the backup-folder in your specified directory on your PC:
+It will get deleted if you pull a new backup from your device, so if you want to keep old backups you'll have to move them to another location.
 
 #How to use
 
-Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours and run the file via the terminal
+Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours, set all options to your liking and then and run the file via the terminal
 
 #Changelog
 
