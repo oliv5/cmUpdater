@@ -54,7 +54,7 @@ It will get deleted if you pull a new backup from your device, so if you want to
 
 #How to use
 
-Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours, set all options to your liking and then and run the file via the terminal
+Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours, set all options to your liking and then run the file via the terminal
 
 #Changelog
 
