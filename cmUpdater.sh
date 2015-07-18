@@ -40,7 +40,7 @@ TWRPoptions=SDB 	#Options for the TWRP-backup/restore
 			#Note: There is an option "M" that skips the MD5-generation when creating a backup
 			#For some reason that same letter will enable MD5-verification when restoring a backup
 			#So for safety's sake MD5-generation and verification are ENABLED.
-			#If for some reason you want to disable it, add the letter M here and remove it at line 211 column 47
+			#If for some reason you want to disable it, add the letter M here and remove it at line 216 column 47
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------
