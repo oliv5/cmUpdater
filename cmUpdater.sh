@@ -96,8 +96,15 @@ ___________________________________________________
 				cmUpdater
 			fi
 			if [[ $REPLY =~ ^[5]$ ]]; then
-				adb reboot recovery
-				clearCache
+				read -p "This will wipe /cache/ and /data/dalvik-cache/, are you sure? (y/n)" -n 1 -r
+				echo 
+					if [[ $REPLY =~ ^[Yy]$ ]]; then
+    						adb reboot recovery
+						clearCache
+					else
+						start
+					fi
+				
 			fi
 			if [[ $REPLY =~ ^[6]$ ]]; then
 				adb reboot
@@ -195,8 +202,14 @@ twrpRestorer(){
 echo
 	if [ -d "${FILEPATH}backup" ]; then
 		echo "Backup found at ${FILEPATH}backup "
-		sleep 3
-		twrpRestorer1
+		cat "${FILEPATH}backup/date.txt"
+		read -p "Are you sure you want to restore this backup? (y/n)" -n 1 -r
+		echo 
+			if [[ $REPLY =~ ^[Yy]$ ]]; then
+				twrpRestorer1
+			else
+				start
+			fi
 	else
 		echo "No Backup found at ${FILEPATH}backup !"
 		sleep 3
@@ -207,8 +220,6 @@ echo
 twrpRestorer1(){
 adb reboot recovery
 echo "Waiting for device..."
-echo
-cat "${FILEPATH}backup/date.txt"
 echo
 echo "Pushing backup to device..."
 echo
@@ -241,19 +252,26 @@ read -p "Do you want to reboot your device? (y/n)" -n 1 -r
 }
 
 cmUpdater(){
-adb reboot recovery
-echo
-echo 'Waiting for device...'
-${WAITFORDEVICE} push "${FILEPATH}cm-${CURL}.zip" /sdcard/
-adb push "${FILEPATH}cm-${CURL}.zip.md5" /sdcard/
-adb shell twrp install /sdcard/cm-${CURL}.zip
-adb shell rm /sdcard/cm-${CURL}.zip
-adb shell rm /sdcard/cm-${CURL}.zip.md5
-read -p "Installation finished. Do you want clear cache and dalvik-cache? (recommended) (y/n)" -n 1 -r
-echo 
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		clearCache
+	if [[ -f "${FILEPATH}cm-${CURL}.zip" ]]; then
+		adb reboot recovery
+		echo
+		echo 'Waiting for device...'
+		${WAITFORDEVICE} push "${FILEPATH}cm-${CURL}.zip" /sdcard/
+		adb push "${FILEPATH}cm-${CURL}.zip.md5" /sdcard/
+		adb shell twrp install /sdcard/cm-${CURL}.zip
+		adb shell rm /sdcard/cm-${CURL}.zip
+		adb shell rm /sdcard/cm-${CURL}.zip.md5
+		read -p "Installation finished. Do you want clear cache and dalvik-cache? (recommended) (y/n)" -n 1 -r
+		echo 
+			if [[ $REPLY =~ ^[Yy]$ ]]; then
+				clearCache
+			else
+				start
+			fi
 	else
+		echo
+		echo "Update not found at ${FILEPATH}cm-${CURL}.zip! Did you download it?"
+		sleep 5
 		start
 	fi
 }
