@@ -36,7 +36,7 @@ This is a Bash-script that allows you to backup, restore and update your Cyanoge
 
 -On Windows you need to make sure that your drivers are working properly, both in the system and in the recovery
 
--You need Cygwin to run this on Windows
+-You need Cygwin to run this on Windows (Base-package, curl from "Net" and wget from "Web" in the installation-process)
 
 -You NEED TWRP for installing the .zip remotely on your device and making backups
 
