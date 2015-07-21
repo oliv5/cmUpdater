@@ -6,7 +6,7 @@ This is a Bash-script that allows you to backup, restore and update your Cyanoge
 
 #Features
 
--Works with every device that is officialy supported by CyanogenMod
+-Updating works with every device that is officialy supported by CyanogenMod, backup and restore works with every Android-Device with a recent version of TWRP.
 
 -Checks for available updates by comparing the CyanogenMod-verison on your device with the newest one available
 
@@ -38,7 +38,9 @@ This is a Bash-script that allows you to backup, restore and update your Cyanoge
 
 -You need Cygwin to run this on Windows (Base-package, curl from "Net" and wget from "Web" in the installation-process)
 
--You NEED TWRP for installing the .zip remotely on your device and making backups
+-You NEED TWRP for installing the .zip remotely on your device and making/restoring backups
+
+-You need CyanogenMod for updating CyanogenMod (duh)
 
 -DO NOT unplug your device at any part of the process
 
