@@ -79,6 +79,10 @@ v0.3:
 
 -Deleted the cmDownloader-project and implemented all features into this one
 
+v0.4
+
+-Added function to remove old updates due to them piling up over time if not removed manually.
+
 # -
 
-Obligatory "I'm not responsible if you fry your device". I have tested this thoroughly with various different devices (victara, condor, m7) but there can still be problems I'm not aware of, even if it seems unlikely.
+Obligatory "I'm not responsible if you fry your device". I have tested this thoroughly with various different devices (victara, condor, m7) and have implemented many failsafe-functions, but there can still be problems I'm not aware of, even if it seems unlikely.

@@ -13,7 +13,7 @@ CMVERSION=12.1		#The CyanogenMod-Version you'd like to search for. Example: '11'
 
 
 FILEPATH="./"		#The path where the script will download CyanogenMod
-			#If you leave './' everything will go in the directory in which the script is located
+			#If you leave './' everything will go in the directory in which your terminal is opened.
 			#The script will automatically check if the update is already present in the specified directory
 			#!! You NEED to make sure your path ends with / !!
 			#Added quotation marks in case your path has spaces in it
@@ -77,6 +77,8 @@ What would you like to do?
 
 -Reboot your device ........................... (6)
 
+-Remove old updates from your PC .............. (7)
+
 -Exit ......................................... (e)
 
 ___________________________________________________
@@ -109,6 +111,15 @@ ___________________________________________________
 			if [[ $REPLY =~ ^[6]$ ]]; then
 				adb reboot
 				start
+			fi
+			if [[ $REPLY =~ ^[7]$ ]]; then
+				read -p "This will remove all updates and MD5-files from your PC, are you sure? (y/n)" -n 1 -r
+				echo 
+					if [[ $REPLY =~ ^[Yy]$ ]]; then
+    						updateRemover
+					else
+						start
+					fi
 			fi
 			if [[ $REPLY =~ ^[Ee]$ ]]; then
 				echo
@@ -256,8 +267,10 @@ cmUpdater(){
 		adb reboot recovery
 		echo
 		echo 'Waiting for device...'
-		${WAITFORDEVICE} push "${FILEPATH}cm-${CURL}.zip" /sdcard/
-		adb push "${FILEPATH}cm-${CURL}.zip.md5" /sdcard/
+		sleep 5
+		echo "Pushing 'cm-${CURL}.zip' to /sdcard/..."
+		${WAITFORDEVICE} push "${FILEPATH}cm-${CURL}.zip" /sdcard/cm-${CURL}.zip
+		adb push "${FILEPATH}cm-${CURL}.zip.md5" /sdcard/cm-${CURL}.zip.md5
 		adb shell twrp install /sdcard/cm-${CURL}.zip
 		adb shell rm /sdcard/cm-${CURL}.zip
 		adb shell rm /sdcard/cm-${CURL}.zip.md5
@@ -272,6 +285,20 @@ cmUpdater(){
 		echo
 		echo "Update not found at ${FILEPATH}cm-${CURL}.zip! Did you download it?"
 		sleep 5
+		start
+	fi
+}
+
+updateRemover(){
+echo
+	if ls ${FILEPATH}cm-* 1> /dev/null 2>&1; then
+		rm ${FILEPATH}cm-*
+		echo "Updates removed!"
+		sleep 2
+		start
+	else
+		echo "No updates found."
+		sleep 2
 		start
 	fi
 }
