@@ -1,4 +1,4 @@
-# cmUpdater v0.3
+# cmUpdater v0.4
 
 #What is this?
 
