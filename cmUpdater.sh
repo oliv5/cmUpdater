@@ -48,7 +48,7 @@ TWRPoptions=SDB 	#Options for the TWRP-backup/restore
 
 adb start-server #Starts the adb-server before reading the variables so that they are loaded correctly
 
-ADB=12.1-20150726-NIGHTLY-victara #$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) #Reads the currently installed CM-version from your device's /system/build.prop
+ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) #Reads the currently installed CM-version from your device's /system/build.prop
 
 WAITFORDEVICE="adb wait-for-device" #Added this as a variable because otherwise it would always mess up the coloring in gedit due to the word "for".
 
