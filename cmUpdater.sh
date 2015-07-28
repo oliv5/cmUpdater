@@ -40,7 +40,7 @@ TWRPoptions=SDB 	#Options for the TWRP-backup/restore
 			#Note: There is an option "M" that skips the MD5-generation when creating a backup
 			#For some reason that same letter will enable MD5-verification when restoring a backup
 			#So for safety's sake MD5-generation and verification are ENABLED.
-			#If for some reason you want to disable it, add the letter M here and remove it at line 238 column 47
+			#If for some reason you want to disable it, add the letter M here and remove it at line 216 column 47
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,13 +48,7 @@ TWRPoptions=SDB 	#Options for the TWRP-backup/restore
 
 adb start-server #Starts the adb-server before reading the variables so that they are loaded correctly
 
-ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) #Reads the currently installed CM-version from your device's /system/build.prop
-
-CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) #Searches the CyanogenMod-website of your device for the latest update
-
-MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) #Gets the MD5-hash for the latest update
-
-WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) #Selects the most recent direct-link to the CyanogenMod-zip
+ADB=12.1-20150726-NIGHTLY-victara #$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) #Reads the currently installed CM-version from your device's /system/build.prop
 
 WAITFORDEVICE="adb wait-for-device" #Added this as a variable because otherwise it would always mess up the coloring in gedit due to the word "for".
 
@@ -141,6 +135,12 @@ echo
 
 
 updateChecker(){
+CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) #Searches the CyanogenMod-website of your device for the latest update
+
+MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) #Gets the MD5-hash for the latest update
+
+WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) #Selects the most recent direct-link to the CyanogenMod-zip
+
 echo
 	if [[ ${ADB} < ${CURL} ]]; then
 		read -p "An updated version is available (cm-${CURL}). Do you want to download it? (y/n)" -n 1 -r
@@ -267,10 +267,12 @@ cmUpdater(){
 		adb reboot recovery
 		echo
 		echo 'Waiting for device...'
+		${WAITFORDEVICE} shell exit
 		sleep 5
+		echo "Pushing MD5 to /sdcard/..."
+		adb push ${FILEPATH}cm-${CURL}.zip.md5 /sdcard/cm-${CURL}.zip.md5
 		echo "Pushing 'cm-${CURL}.zip' to /sdcard/..."
-		${WAITFORDEVICE} push "${FILEPATH}cm-${CURL}.zip" /sdcard/cm-${CURL}.zip
-		adb push "${FILEPATH}cm-${CURL}.zip.md5" /sdcard/cm-${CURL}.zip.md5
+		adb push ${FILEPATH}cm-${CURL}.zip /sdcard/cm-${CURL}.zip
 		adb shell twrp install /sdcard/cm-${CURL}.zip
 		adb shell rm /sdcard/cm-${CURL}.zip
 		adb shell rm /sdcard/cm-${CURL}.zip.md5
