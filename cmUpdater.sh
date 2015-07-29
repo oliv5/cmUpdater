@@ -52,6 +52,12 @@ ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.
 
 WAITFORDEVICE="adb wait-for-device" #Added this as a variable because otherwise it would always mess up the coloring in gedit due to the word "for".
 
+CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) #Searches the CyanogenMod-website of your device for the latest update
+
+MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) #Gets the MD5-hash for the latest update
+
+WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) #Selects the most recent direct-link to the CyanogenMod-zip
+
 start(){
 clear
 echo
@@ -135,12 +141,6 @@ echo
 
 
 updateChecker(){
-CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) #Searches the CyanogenMod-website of your device for the latest update
-
-MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) #Gets the MD5-hash for the latest update
-
-WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) #Selects the most recent direct-link to the CyanogenMod-zip
-
 echo
 	if [[ ${ADB} < ${CURL} ]]; then
 		read -p "An updated version is available (cm-${CURL}). Do you want to download it? (y/n)" -n 1 -r
