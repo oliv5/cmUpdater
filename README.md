@@ -58,38 +58,6 @@ It will get deleted if you pull a new backup from your device, so if you want to
 
 Make sure you meet all requirements and then replace my device-information in the cmupdater.sh file with yours, set all options to your liking and then run the file via the terminal
 
-#Changelog
-
-v0.1:
-
--Initial release
-
-v0.2:
-
--Added function to check if update-files are already present in the specified directory
-
--Implemented MD5 checksums for the updates
-
-v0.3:
-
--Added restore-option for backups
-
--Completely changed the way functions are called (used to be a chain where all functions called other functions, now it's a menu). 
- This also allows for much simpler implementation of new features and changes in the future.
-
--Deleted the cmDownloader-project and implemented all features into this one
-
-v0.4
-
--Added function to remove old updates due to them piling up over time if not removed manually.
-
-v0.41
-
--Functions are now only called if your device is properly connected for faster launching of the script
-
--Added some more comments
-
-
 # -
 
 Obligatory "I'm not responsible if you fry your device". I have tested this thoroughly with various different devices (victara, condor, m7) and have implemented many failsafe-functions, but there can still be problems I'm not aware of, even if it seems unlikely.
