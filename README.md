@@ -1,4 +1,4 @@
-# cmUpdater v0.4
+# cmUpdater v0.41
 
 #What is this?
 
@@ -82,6 +82,13 @@ v0.3:
 v0.4
 
 -Added function to remove old updates due to them piling up over time if not removed manually.
+
+v0.41
+
+-Functions are now only called if your device is properly connected for faster launching of the script
+
+-Added some more comments
+
 
 # -
 

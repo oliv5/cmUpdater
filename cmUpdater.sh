@@ -40,23 +40,11 @@ TWRPoptions=SDB 	#Options for the TWRP-backup/restore
 			#Note: There is an option "M" that skips the MD5-generation when creating a backup
 			#For some reason that same letter will enable MD5-verification when restoring a backup
 			#So for safety's sake MD5-generation and verification are ENABLED.
-			#If for some reason you want to disable it, add the letter M here and remove it at line 216 column 47
+			#If for some reason you want to disable it, add the letter M here and remove it at line 226 column 47
 
+#Check the end of the script for all of the variables with comments
 
 #------------------------------------------------------------------------------------------------------------------------------------------
-
-
-adb start-server #Starts the adb-server before reading the variables so that they are loaded correctly
-
-ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1) #Reads the currently installed CM-version from your device's /system/build.prop
-
-WAITFORDEVICE="adb wait-for-device" #Added this as a variable because otherwise it would always mess up the coloring in gedit due to the word "for".
-
-CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) #Searches the CyanogenMod-website of your device for the latest update
-
-MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) #Gets the MD5-hash for the latest update
-
-WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) #Selects the most recent direct-link to the CyanogenMod-zip
 
 start(){
 clear
@@ -294,6 +282,7 @@ cmUpdater(){
 updateRemover(){
 echo
 	if ls ${FILEPATH}cm-* 1> /dev/null 2>&1; then
+	#Checks if files are present and then redirects the command so that it doesn't generate any output.
 		rm ${FILEPATH}cm-*
 		echo "Updates removed!"
 		sleep 2
@@ -311,4 +300,31 @@ adb shell twrp wipe dalvik
 start
 }
 
-start
+
+
+if adb shell cd /; then 
+#Checks if your device is connected.
+#If "adb shell cd /" returns an error, it will exit. If it doesn't, it will set all variables and continue.
+
+	ADB=$(adb shell grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} /system/build.prop | head -n1)
+	#Reads the currently installed CM-version from your device's /system/build.prop
+
+	WAITFORDEVICE="adb wait-for-device" 
+	#Added this as a variable because otherwise it would always mess up the coloring in gedit due to the word "for".
+
+	CURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o ${CMVERSION}'-........-NIGHTLY-'${DEVICE} | head -n1 | grep ${CMVERSION}'-........-NIGHTLY-'${DEVICE} ) 
+	#Searches the CyanogenMod-website of your device for the latest update
+
+	MD5=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -o 'md5sum: ................................' | cut -c 8-40 | head -n1) 
+	#Gets the MD5-hash for the latest update
+
+	WGETURL=$(curl -s 'https://download.cyanogenmod.org/?device='${DEVICE} | grep -v 'jen' | grep -o -m1 'http://get.cm/get/...' | head -n1) 
+	#Selects the most recent direct-link to the CyanogenMod-zip
+		
+	start
+else
+	echo
+	echo "Could not communicate with your device."
+	echo "Make sure it is connected and that your drivers and ADB tools are set up properly."
+	exit
+fi
